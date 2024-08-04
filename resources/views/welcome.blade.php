@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--icon-->
+    <link rel="shortcut icon" href="{{asset('welcome/header.ico')}}" />
+    <link rel="stylesheet" href="{{asset('welcome/font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css')}}" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- google font inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet" />
+
+    <title>11 Ekspress</title>
+
+    <!-- css -->
+    <link rel="stylesheet" href="{{asset('css/welcome.css')}}" type="text/css" />
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light shadow fixed-top" style="background-color: white">
+        <div class="container">
+            <img src="{{asset('welcome/navLogo.png')}}" alt="" />
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                @if (Route::has('login'))
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="#profil">PROFILE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#visimisi">VISI MISI</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">ABOUT US</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#background-story">CAREER</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">CONTACT</a>
+                        </li>
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url(Auth::user()->role . '/dashboard') }}">DASHBOARD</a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('login') }}">LOGIN</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{route('register')}}">REGISTER</a>
+                                </li>
+                            @endif
+                        @endauth
+
+                    </ul>
+                @endif
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="profil" class="hero container mt-4">
+        <div class="col-md-10 text-hero-div">
+            <p class="text-hero">
+                Kami berkomitmen untuk memberikan
+                <span style="color: #c9cc7e">
+                    Pelayanan <br class="hide" />
+                    Mudah, Cepat dan Terpercaya </span>untuk membantu <br class="hide" />
+                pelaku bisnis berkembang dan maju.
+            </p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 d-flex justify-content-center py-3">
+                <img src="{{asset('welcome/heroImage.png')}}" alt="Hero Image" class="hero-img" />
+            </div>
+            <div class="col-md-7 d-flex justify-content-start py-3 text-lead-div ">
+                <div class="text-lead d-flex">
+                    <p>
+                        11 Express hadir pada tahun 2020 memberikan inovasi layanan pickup paket tanpa ketentuan untuk
+                        menjawab dan membantu menyelesaikan permasalahan pelaku bisnis. Di tahun 2024, 11 express
+                        konsisten untuk terus melakukan inovasi
+                        yang didukung oleh teknologi pengiriman terintegrasi untuk terus membantu pelaku bisnis agar
+                        mendapatkan pengalaman pengiriman yang mudah, cepat dan terpecaya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero Section -->
+
+    <!-- visimisi -->
+    <section id="visimisi">
+        <div class="container">
+            <div class="row text-center mb-3 mt-5"></div>
+            <div class="row justify-content-center fs-5">
+                <div class="col-md-4 mt-3 kolom m-5 text-center">
+                    <h3 class="text-center text-visi">VISI</h3>
+                    <p class="text-center text-isi">Menjadi perusahaan expedisi yang memberikan layanan Mudah, Cepat dan
+                        Terpercaya. <br /><br /><br /><br /><br /><br /><br /><br /></p>
+                    <img src="{{asset('welcome/visi.svg')}}" alt="gambar" width="200" />
+                </div>
+                <div class="col-md-4 mt-3 m-5 kolom text-center">
+                    <h3 class="text-center text-misi">MISI</h3>
+                    <p class="text-center text-isi">
+                        Kami berkomitmen membangun keunggulan operasional yang terpercaya dan aman, serta memberdayakan
+                        bisnis digital dan ekonomi kreatif untuk pertumbuhan berkelanjutan. Kami fokus pada kepuasan
+                        pelanggan, ekosistem terintegrasi,
+                        pelestarian lingkungan, pemberdayaan sosial, dan menciptakan lingkungan kerja yang produktif dan
+                        nyaman.
+                    </p>
+                    <img src="{{asset('welcome/misi.svg')}}" alt="gambar" width="200" />
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- END visimisi -->
+
+    <!-- about us -->
+    <section id="about" class="about-us-section py-5">
+        <div class="container">
+            <h1 class="text-hero text-center">About Us</h1>
+            <div class="row justify-content-center">
+                <!-- card1 -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-md">
+                        <a target="_blank" href="https://github.com/fardian123">
+                            <img src="{{asset('welcome/img/FARDIAN.png')}}" class="card-img-top" alt="Person 5" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Fardian</h5>
+                            <p class="card-text">CEO</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- card2 -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-md">
+                        <a target="_blank" href="https://github.com/Haqiqi28">
+                            <img src="{{asset('welcome/img/haqiqi.jpeg')}}" class="card-img-top" alt="Person 5" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Haqiqi</h5>
+                            <p class="card-text">CFO</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- card3 -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-md">
+                        <a target="_blank" href="https://github.com/Zuans">
+                            <img src="{{asset('welcome/img/juan.jpeg')}}" class="card-img-top" alt="Person 5" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Juan</h5>
+                            <p class="card-text">COO</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- card4 -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-md">
+                        <a target="_blank" href="https://github.com/TeguhArifin">
+                            <img src="{{asset('welcome/img/teguh.png')}}" class="card-img-top" alt="Person 5" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Teguh</h5>
+                            <p class="card-text">CMO</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- card5 -->
+                <div class="col-md-4 col-lg-2">
+                    <div class="card shadow-md">
+                        <a target="_blank" href="https://github.com/tirtadhi">
+                            <img src="{{asset('welcome/img/tirta.jpeg')}}" class="card-img-top" alt="Person 5" />
+                        </a>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Tirta</h5>
+                            <p class="card-text">CTO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- end -->
+
+    <!-- background story -->
+    <section id="background-story" class="hero container">
+        <div class="mb-5">
+            <p class="text-hero text-center mb-3">Kisah awal singkat perjalanan 11 Express hingga saat ini</p>
+            <p class="text-center title-caption">Dari langkah-langkah kecil menuju tujuan yang besar</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 d-flex justify-content-start py-3 text-lead-div">
+                <div class="d-flex flex-column">
+                    <h1 class="artikel-subjudul mb-4"><span style="color: #c9cc7e"> 11 Express</span> Background</h1>
+                    <p class="artikel">
+                        Kisah ini berawal dari tahun 2014, SiCepat menjadi ekspedisi yang mulai memasuki ranah Social
+                        Commerce, Corporate, dan e-commerce dengan kualitas layanan pengiriman terbaik bagi para
+                        pelanggan. Nilai-nilai yang SiCepat miliki
+                        menjadi visi utama untuk memenuhi kebutuhan layanan pengiriman mereka. SiCepat terus
+                        meningkatkan kinerjanya dengan membangun jaringan pendukung yang kuat dan saling terhubung di
+                        seluruh Indonesia.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6 d-flex justify-content-center py-3">
+                <img src="/welcome/storyImage.png" alt="Hero Image" class="hero-img" />
+            </div>
+        </div>
+    </section>
+    <!-- END -->
+
+    <!-- footer -->
+    <div class="card-footer" id="contact">
+        <div class="footer-body">
+            <h2 class="fw-bold">CONTACT US</h2>
+            <ul class="contact-list">
+                <li>
+                    <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;062-999-021</i>
+                </li>
+                <li>
+                    <i class="fa fa-envelope-o" aria-hidden="true">&nbsp;&nbsp;11express@gmail.com</i>
+                </li>
+                <li>
+                    <i class="fa fa-whatsapp" aria-hidden="true">&nbsp;&nbsp;&nbsp;062-213-412</i>
+                </li>
+                <li>
+                    <i class="fa fa-map-marker" aria-hidden="true">&nbsp;&nbsp;&nbsp;&nbsp;universitas pamulang,
+                        kecamatan pamulang, <br />
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbspkota tangerang selatan, provinsi banten</i>
+                </li>
+            </ul>
+            <div>
+                <hr />
+                <p class="text-center">Copyright ISC Software depelopment team 11</p>
+            </div>
+        </div>
+    </div>
+    <!--end footer -->
+
+    <!-- ionicon -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+
+
+    <!-- boostrap cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

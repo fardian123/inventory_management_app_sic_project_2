@@ -1,0 +1,252 @@
+* {
+  font-family: "Inter", sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.hero {
+  padding-top: 60px; /* Sesuaikan dengan tinggi navbar Anda */
+}
+
+body {
+  background-color: #fff6e5;
+}
+/* scroll bar */
+::-webkit-scrollbar {
+  width: 13px;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(360deg, #c9cc7e, #ffff7d);
+}
+::-webkit-scrollbar-track {
+  background-color: #fff6e5;
+  width: 50px;
+}
+/* navbar css */
+.header {
+  background-color: white;
+}
+
+.nav-link {
+  color: #666666;
+  font-size: 15px;
+  font-weight: 400;
+}
+.logo {
+  height: 55px;
+  width: 116px;
+}
+.navbar-nav .nav-link {
+  position: relative;
+  padding: 10px 15px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #c9cc7e; /* Ubah warna teks saat hover */
+}
+
+.navbar-nav .nav-link::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin-top: 5px;
+  right: 0;
+  background: #c9cc7e; /* Warna garis bawah saat hover */
+  transition: width 0.3s ease;
+  -webkit-transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%; /* Membuat garis bawah penuh saat hover */
+  left: 0;
+  background: #c9cc7e; /* Warna garis bawah saat hover */
+}
+/* end header css */
+
+/* hero css */
+.text-hero-div {
+  width: 100%;
+}
+.text-hero {
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+}
+.hero-img {
+  height: 300px;
+  width: auto;
+  justify-content: end;
+  padding-left: 32px;
+}
+.text-lead {
+  color: #828282;
+  font-size: 18px;
+  font-weight: 400;
+  width: 80%;
+}
+/* responsive hero*/
+@media (max-width: 990px) {
+  .hide {
+    display: none;
+  }
+  .text-hero {
+    font-size: 33px;
+  }
+  .text-lead {
+    width: 100%;
+    text-align: justify;
+    align-items: center;
+    font-size: 14px;
+  }
+  .hero-img {
+    height: 270px;
+  }
+}
+@media (max-width: 767px) {
+  .navbar-collapse {
+    text-align: center;
+  }
+  .text-hero {
+    text-align: start;
+    font-size: 25px;
+  }
+  .text-lead {
+    width: 100%;
+    text-align: justify;
+  }
+  .hero-img {
+    height: 250px;
+  }
+}
+@media (max-width: 570px) {
+  .text-hero {
+    font-size: 20px;
+  }
+  .hero-img {
+    height: 230px;
+  }
+}
+
+/* visimisi css  */
+
+#visimisi .kolom {
+  background: linear-gradient(360deg, #c9cc7e, #ffff7d);
+  padding: 30px;
+  border-radius: 30px;
+}
+.text-visi {
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+}
+.text-misi {
+  font-weight: bold;
+  font-size: 35px;
+  text-align: center;
+  font-weight: bold;
+  color: #666666;
+}
+#visimisi p {
+  color: #666666;
+}
+/* end visimisi css */
+/* responsive hero*/
+@media (max-width: 990px) {
+  .text-visi,
+  .text-misi {
+    font-size: 25px;
+  }
+  .text-isi {
+    width: 100%;
+    text-align: justify;
+    align-items: center;
+    font-size: 14px;
+  }
+}
+
+/* about-us */
+#about {
+  background: linear-gradient(#c9cc7e, #ffff7d);
+}
+
+.card {
+  margin: 15px;
+  background-color: #959b5f;
+  border: none;
+  border-radius: 5px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-5px); /* Menggeser kartu ke atas saat di-hover */
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih jelas saat di-hover */
+}
+.card-img-top {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card-title {
+  margin-bottom: 0;
+}
+.card-text {
+  color: white;
+}
+
+/* story css */
+#background-story {
+  margin-bottom: 120px;
+}
+
+.title-caption {
+  font-size: 1.25rem;
+  color: #666666;
+  font-weight: 600;
+  text-align: center;
+}
+
+.artikel-subjudul {
+  font-size: 1.5rem;
+  color: #666666;
+  font-weight: 600;
+}
+
+/* footer */
+.card-footer {
+  background: linear-gradient(#c9cc7e, #ffff7d);
+}
+.footer-body {
+  background-color: #fff6e5;
+  margin: 40px;
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.list {
+  margin: 30px;
+}
+
+.contact-list {
+  list-style-type: none;
+}
+/* END FOOTER */
+
+/* Responsive Story Section */
+
+@media (max-width: 767px) {
+  #background-story .body .d-flex {
+    flex-direction: column-reverse;
+  }
+  .title-caption {
+    font-size: 0.9rem;
+  }
+}
