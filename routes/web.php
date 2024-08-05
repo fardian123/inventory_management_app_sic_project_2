@@ -54,7 +54,8 @@ Route::middleware(['auth','roles:supervisor'])->group(function(){
 
 
     Route::get('/supervisor/inventory/management',[BarangController::class, 'supervisorInventoryManagement'])->name('supervisor.inventory.management');
-
+    Route::get('/supervisor/inventory/report',[BarangController::class,'supervisorInventoryReport'])->name('supervisor.inventory.report');
+    Route::get('/supervisor/inventory/export',[BarangController::class,'supervisorInventoryExport'])->name('supervisor.inventory.export');
     
 });
 

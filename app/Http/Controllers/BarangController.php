@@ -9,7 +9,8 @@ use App\Models\Resi;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Validator;
-
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\BarangExport;
 
 class BarangController extends Controller
 {
@@ -198,7 +199,7 @@ class BarangController extends Controller
         }
 
 
-        $query_out = Barang::where(function($query_out){
+        $query_out = Barang::where(function ($query_out) {
             $query_out->where('tanggal_keluar', '<', Carbon::now())->get();
         });
 
@@ -215,12 +216,35 @@ class BarangController extends Controller
 
 
 
-
-
-
         $barangsOut = $query_out->get();
         $barangs = $query->get();
         return view('supervisor.supervisor_inventory_management', compact('barangs', 'barangsOut'));
+    }
+
+    public function supervisorInventoryReport(Request $request)
+    {
+        $barangs = Barang::query();
+        if ($request->filter) {
+            if ($request->filter === 'unscheduled') {
+                $barangs->whereNull('tanggal_keluar');
+            } elseif ($request->filter === 'scheduled') {
+                $barangs->whereNotNull('tanggal_keluar');
+            }
+        }
+        if ($request->search) {
+            $barangs->where('nama_barang', 'LIKE', "%{$request->search}%")
+                ->orWhere('id', 'LIKE', "%{$request->search}%")
+                ->orWhere('pengirim', 'LIKE', "%{$request->search}%")
+                ->orWhere('penerima', 'LIKE', "%{$request->search}%");
+        }
+        $barangs = $barangs->get();
+
+        return view('supervisor.supervisor_inventory_report', compact('barangs'));
+    }
+
+    public function supervisorInventoryExport()
+    {
+        return Excel::download(new BarangExport, 'Barang.xlsx');
     }
 
 }

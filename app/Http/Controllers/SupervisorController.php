@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
-class SupervisorController extends Controller
+
+class SupervisorController extends Controller 
 {
     public function supervisorDashboard(){
         return view('supervisor.supervisor_index');
@@ -84,4 +85,6 @@ class SupervisorController extends Controller
 
 
     // supervisor barang management
+
+
 }

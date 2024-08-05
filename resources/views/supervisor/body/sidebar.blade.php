@@ -29,6 +29,15 @@
 				<div class="menu-title">Manage Inventory</div>
 			</a>
 		</li>
+		<li class="menu-label">Laporan</li>
+
+		<li>
+			<a href="{{route('supervisor.inventory.report')}}">
+				<div class="parent-icon"><i class='bx bx-receipt'></i>
+				</div>
+				<div class="menu-title">Buat Laporan</div>
+			</a>
+		</li>
 		
 
 		
