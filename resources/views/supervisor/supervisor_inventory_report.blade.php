@@ -33,9 +33,10 @@
                                 href="{{route('supervisor.inventory.report', ['filter' => 'scheduled'])}}">Scheduled</a>
                         </div>
                     </div>
-                    <a href="{{route('supervisor.inventory.export')}}"><button type="button" class="btn btn-primary px-4 ms-2" >
+                    <button type="button" class="btn btn-primary px-4 ms-2" data-bs-target="#reportModal"
+                        data-bs-toggle="modal">
                         <i class="bx bx-archive-in"></i>
-                    </button></a>
+                    </button>
 
                 </div>
             </form>
@@ -47,6 +48,7 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
+                        <th>No</th>
                             <th>Product</th>
                             <th>ID</th>
                             <th>Amount</th>
@@ -62,6 +64,7 @@
                     <tbody>
                         @forelse($barangs as $barang)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$barang->nama_barang}}</td>
                                                 <td>{{$barang->id}}</td>
                                                 <td>{{$barang->jumlah}}</td>
@@ -92,5 +95,88 @@
 
 </div>
 
+
+<div class="modal fade" id="reportModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Report Barang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="row g-3" method="get" action="{{route('supervisor.inventory.export')}}"
+                    enctype="multipart/form-data" id="barangAddForm">
+                    @csrf
+
+
+                    <div>
+                        <p class="form-label">Filter By</p>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <select type="text" class="form-control" id="schedule_filter" placeholder="Nama Barang"
+                                    name="schedule_filter" value="">
+                                    <option value=""></option>
+                                    <option value="scheduled">Scheduled</option>
+                                    <option value="unscheduled">Unscheduled</option>
+                                </select>
+                                <span class="text-danger" id="schedule_filter_error"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <select type="text" class="form-control" id="tanggal_filter" placeholder="Nama Barang"
+                                    name="tanggal_filter" value="" >
+                                    <option value="tanggal_masuk">Tanggal Masuk</option>
+                                    <option value="tanggal_keluar" id="tanggal_keluar_opsi">Tanggal Keluar</option>
+                                </select>
+                                <span class="text-danger" id="tanggal_filter_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                    <div class="col-md-6">
+                        <label for="tanggal_awal" class="form-label">Tanggal Awal</label>
+                        <input type="date" class="form-control" id="tanggal_awal" placeholder="John Doe" name="tanggal_awal"
+                            value="">
+                        <span class="text-danger" id="tanggal_awal_error"></span>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="tanggal_akhir" class="form-label">Tanggal Akhir</label>
+                        <input type="date" class="form-control" id="tanggal_akhir" placeholder="Albert Einstein"
+                            name="tanggal_akhir" value="">
+                        <span class="text-danger" id="tanggal_akhir_error"></span>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input type="submit" value="Submit" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const schedule_filter = document.getElementById('schedule_filter');
+        const tanggal_keluar_opsi =document.getElementById('tanggal_keluar_opsi');
+        function toggleDateInput(){
+            if(schedule_filter.value === "unscheduled"){
+                tanggal_keluar_opsi.disabled = true;
+            }
+            else{
+                tanggal_keluar_opsi.disabled = false;
+            }
+        }
+
+        toggleDateInput();
+        schedule_filter.addEventListener('change',toggleDateInput)
+
+    })
+</script>
 
 @endsection

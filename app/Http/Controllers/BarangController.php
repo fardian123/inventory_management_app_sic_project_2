@@ -237,14 +237,20 @@ class BarangController extends Controller
                 ->orWhere('pengirim', 'LIKE', "%{$request->search}%")
                 ->orWhere('penerima', 'LIKE', "%{$request->search}%");
         }
-        $barangs = $barangs->get();
+        $barangs = $barangs->get()->sortByDesc('tanggal_masuk');
 
         return view('supervisor.supervisor_inventory_report', compact('barangs'));
     }
 
-    public function supervisorInventoryExport()
+    public function supervisorInventoryExport(Request $request)
     {
-        return Excel::download(new BarangExport, 'Barang.xlsx');
+        $startDate = $request->tanggal_awal;
+        $endDate = $request->tanggal_akhir;
+        $scheduleFilter = $request->schedule_filter;
+        $filterBy = $request->tanggal_filter;
+        $filename = "Barang ".$scheduleFilter.($filterBy==="tanggal_masuk" ? "Masuk ":"Keluar ").$startDate."-".$endDate.".xlsx";
+
+        return Excel::download(new BarangExport($startDate,$endDate,$scheduleFilter,$filterBy), $filename);
     }
 
 }
