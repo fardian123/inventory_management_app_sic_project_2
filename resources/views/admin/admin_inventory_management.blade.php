@@ -15,7 +15,7 @@
                                 style="color:inherit; {{(request('search') || request('filter')) ? '' : 'pointer-events:none;'}}"><i
                                     class="bx bx-{{(request('search') || request('filter')) ? 'refresh' : 'search'}}"></i></a>
                         </span>
-                        <input type="text" class="form-control" placeholder="Search mail" name="search">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
 
                     </div>
 
@@ -47,6 +47,7 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
+                            <th>No</th>
                             <th>Product</th>
                             <th>ID</th>
                             <th>Amount</th>
@@ -62,6 +63,7 @@
                     <tbody>
                         @forelse($barangs as $barang)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$barang->nama_barang}}</td>
                                                 <td>{{$barang->id}}</td>
                                                 <td>{{$barang->jumlah}}</td>

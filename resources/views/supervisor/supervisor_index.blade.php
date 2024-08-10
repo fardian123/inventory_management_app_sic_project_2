@@ -11,7 +11,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Total Barang</p>
-                            <h4 class="my-1 text-info"></h4>
+                            <h4 class="my-1 text-info">{{$total_barang}}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i
                                 class='bx bxs-package'></i>
@@ -26,7 +26,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Unscheduled</p>
-                            <h4 class="my-1 text-danger"></h4>
+                            <h4 class="my-1 text-danger">{{$barang_menetap}}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-burning text-white ms-auto"><i
                                 class='bx bxs-archive-in'></i>
@@ -41,7 +41,7 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Scheduled</p>
-                            <h4 class="my-1 text-success"></h4>
+                            <h4 class="my-1 text-success">{{$barang_keluar}}</h4>
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-ohhappiness text-white ms-auto"><i
                                 class='bx bxs-archive-out'></i>
@@ -56,11 +56,11 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Barang Keluar</p>
-                            <h4 class="my-1 text-warning"></h4>
+                            <h4 class="my-1 text-warning">{{$barang_out}}</h4>
 
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i
-                                class='bx bx-door'></i>
+                                class='bx bx-exit'></i>
                         </div>
                     </div>
                 </div>

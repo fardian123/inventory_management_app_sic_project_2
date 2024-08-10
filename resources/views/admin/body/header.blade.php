@@ -54,7 +54,7 @@
             <div class="user-box dropdown px-3">
                 <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#"
                     role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="{{asset('backend/assets/images/avatars/avatar-1.png')}}" class="user-img"
+                    <img src="{{$profileData->sex == "wanita" ? asset('backend/assets/images/avatars/noavatar64f.png') : asset('backend/assets/images/avatars/noavatar64.png') }}  " class="user-img"
                         alt="user avatar">
                     <div class="user-info">
                         <p class="user-name mb-0">{{$profileData->name}}</p>
@@ -68,15 +68,10 @@
                     <li><a class="dropdown-item d-flex align-items-center" href="{{route('admin.change.password')}}"><i
                                 class="bx bx-cog fs-5"></i><span>Change Password</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
+                    <li><a class="dropdown-item d-flex align-items-center" href="{{route('admin.dashboard')}}"><i
                                 class="bx bx-home-circle fs-5"></i><span>Dashboard</span></a>
                     </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-dollar-circle fs-5"></i><span>Earnings</span></a>
-                    </li>
-                    <li><a class="dropdown-item d-flex align-items-center" href="javascript:;"><i
-                                class="bx bx-download fs-5"></i><span>Downloads</span></a>
-                    </li>
+                   
                     <li>
                         <div class="dropdown-divider mb-0"></div>
                     </li>

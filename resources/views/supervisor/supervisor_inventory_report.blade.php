@@ -15,7 +15,7 @@
                                 style="color:inherit; {{(request('search') || request('filter') || request('search_out')) ? '' : 'pointer-events:none;'}}"><i
                                     class="bx bx-{{(request('search') || request('filter') || request('search_out')) ? 'refresh' : 'search'}}"></i></a>
                         </span>
-                        <input type="text" class="form-control" placeholder="Search mail" name="search">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
 
                     </div>
 

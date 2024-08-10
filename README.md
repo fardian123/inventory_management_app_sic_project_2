@@ -1,3 +1,62 @@
+# Warehouse Management Program
+
+## Overview
+This program was developed by team 11 as the second project for the Independent Study Club. The goal of the program is to manage items in a warehouse efficiently with two distinct user roles: Admin and Supervisor.
+
+## Features
+
+### Admin Role
+- **CRUD Operations**: Admins can create, read, update, and delete items in the warehouse.
+- **Item Management**: Admins can manage item details, including editing, adding, or removing items.
+- **Schedule Management**: Admins can manage item Schedule, including editing Item Schedule, adding, or removing Item Schedule.
+- **History Tracking**: Admins can view the history of items that have exited the warehouse.
+
+### Supervisor Role
+- **View Item Status**: Supervisors can view the status of all items, including:
+  - Items currently in the warehouse.
+  - Items that have exited the warehouse.
+  - Items with a scheduled exit date.
+  - Items without a scheduled exit date.
+- **Generate Reports**: Supervisors can generate reports based on the entry or exit dates of items within a specified time range.
+
+## Installation
+
+1. Clone the repository:
+    ```bash
+    git clone [repository-url]
+    ```
+2. Install dependencies:
+    ```bash
+    composer install
+    ```
+3. Set up the database:
+    - Create a database and configure your `.env` file.
+    - Run migrations:
+    ```bash
+    php artisan migrate
+    ```
+
+4. Run the application:
+    ```bash
+    php artisan serve
+    ```
+
+## Usage
+
+- **Admin**: Log in with admin credentials to manage warehouse items.
+- **Supervisor**: Log in with supervisor credentials to view item statuses and generate reports.
+
+## Technologies Used
+- **PHP**: Backend programming language.
+- **Laravel**: Framework used to build the application.
+- **MySQL**: Database management system.
+
+## Contact
+For any inquiries, feel free to reach out at [your email].
+
+
+
+# Laravel
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
@@ -6,6 +65,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
+
+
 
 ## About Laravel
 

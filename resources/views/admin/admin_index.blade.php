@@ -60,7 +60,7 @@
 
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-orange text-white ms-auto"><i
-                                class='bx bx-door'></i>
+                                class='bx bx-exit'></i>
                         </div>
                     </div>
                 </div>

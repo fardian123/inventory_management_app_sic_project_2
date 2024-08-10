@@ -180,7 +180,6 @@ body {
 
 .card {
   margin: 15px;
-  background-color: #959b5f;
   border: none;
   border-radius: 5px;
   transition: transform 0.3s, box-shadow 0.3s;

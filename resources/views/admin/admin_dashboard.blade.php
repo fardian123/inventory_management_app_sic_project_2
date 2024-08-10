@@ -6,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--favicon-->
-	<link rel="icon" href="{{asset('backend/assets/images/favicon-32x32.png')}}" type="image/png" />
+	<link rel="shortcut icon" href="{{asset('welcome/header.ico')}}" />
 	<!--plugins-->
 	<link href="{{asset('backend/assets/plugins/vectormap/jquery-jvectormap-2.0.2.css')}}" rel="stylesheet" />
 	<link href="{{asset('backend/assets/plugins/simplebar/css/simplebar.css')}}" rel="stylesheet" />
@@ -28,7 +28,7 @@
 
 	<!-- toaster -->
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
-	<title>Rocker - Bootstrap 5 Admin Dashboard Template</title>
+	<title>11 Express Inventory Management</title>
 </head>
 
 <body>

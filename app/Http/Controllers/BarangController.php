@@ -8,6 +8,7 @@ use App\Models\Barang;
 use App\Models\Resi;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Undefined;
 use Validator;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\BarangExport;
@@ -248,11 +249,30 @@ class BarangController extends Controller
         $endDate = $request->tanggal_akhir;
         $scheduleFilter = $request->schedule_filter;
         $filterBy = $request->tanggal_filter;
-        $filename = "Barang ".$scheduleFilter.($filterBy==="tanggal_masuk" ? "Masuk ":"Keluar ").$startDate."-".$endDate.".xlsx";
+        $filename = "Barang " . $scheduleFilter . ($filterBy === "tanggal_masuk" ? "Masuk " : "Keluar ") . $startDate . "-" . $endDate . ".xlsx";
 
-        return Excel::download(new BarangExport($startDate,$endDate,$scheduleFilter,$filterBy), $filename);
+        return Excel::download(new BarangExport($startDate, $endDate, $scheduleFilter, $filterBy), $filename);
     }
 
+    public function cekResi(Request $request)
+    {
+        // Mencari resi berdasarkan nomor resi yang diinput
+        $resi = Resi::where('nomor_resi', $request->input('resi'))->first();
+    
+        if ($resi) {
+            $barang = Barang::find($resi->barang_id);
+            return view('welcome', compact('resi', 'barang'));
+        } else {
+            $notification = array(
+                'message' => 'Resi tidak ditemukan.',
+                'alert-type' => 'error'
+            );
+            return redirect('/')->with($notification);
+            // return redirect()->route('welcome')->with($notification)->withInput();
+        }
+
+
+    }
 }
 
 

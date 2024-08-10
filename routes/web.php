@@ -14,7 +14,7 @@ Route::get('/', function () {
     \Log::info('Loading welcome view');
     return view('welcome');
 
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -58,6 +58,8 @@ Route::middleware(['auth','roles:supervisor'])->group(function(){
     Route::get('/supervisor/inventory/export',[BarangController::class,'supervisorInventoryExport'])->name('supervisor.inventory.export');
     
 });
+
+Route::get('/cekresi',[BarangController::class,'cekResi'])->name('cek.resi');
 
 
 

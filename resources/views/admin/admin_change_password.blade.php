@@ -8,7 +8,7 @@
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
-                    <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
+                    <li class="breadcrumb-item"><a href="{{route('admin.dashboard')}}"><i class="bx bx-home-alt"></i></a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">Change Password</li>
                 </ol>
@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="d-flex flex-column align-items-center text-center">
-                                <img src="{{asset('backend/assets/images/avatars/avatar-1.png')}}" alt="Admin"
+                                <img src="{{ Auth::user()->sex == "wanita" ? asset('backend/assets/images/avatars/noavatar64f.png') : asset('backend/assets/images/avatars/noavatar64.png')}}" alt="Admin"
                                     class="rounded-circle p-1 bg-primary" width="110">
                                 <h2 class="pt-2 mb-0">{{Auth::user()->name}}</h2>
                                 <p>{{Auth::user()->role}} | {{Auth::user()->sex}}</p>

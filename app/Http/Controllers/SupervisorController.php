@@ -6,12 +6,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Barang;
+use Carbon\Carbon;
 
 
 class SupervisorController extends Controller 
 {
     public function supervisorDashboard(){
-        return view('supervisor.supervisor_index');
+        $barang_keluar = (Barang::whereNotNull('tanggal_keluar')->count())- (Barang::where('tanggal_keluar','<=',Carbon::now())->count());
+        $barang_menetap = Barang::whereNull('tanggal_keluar')->count();
+        $total_barang = (Barang::get()->count()) - (Barang::where('tanggal_keluar','<=',Carbon::now())->count());
+        $barang_out = Barang::where('tanggal_keluar','<=',Carbon::now())->count();
+       
+        return view('supervisor.supervisor_index',compact('barang_keluar','barang_menetap','total_barang','barang_out'));
     }
 
     public function supervisorLogout(Request $request)

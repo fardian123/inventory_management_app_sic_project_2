@@ -3,6 +3,7 @@
 
 
 <div class="page-content">
+    <h1 class="font-weight-light text-muted">Item In Storage</h1>
     <div class="card radius-10">
         <div class="card-header bg-transparent">
             <form method="GET" action="{{ route('supervisor.inventory.management') }}"
@@ -15,7 +16,7 @@
                                 style="color:inherit; {{(request('search') || request('filter') || request('search_out')) ? '' : 'pointer-events:none;'}}"><i
                                     class="bx bx-{{(request('search') || request('filter') || request('search_out')) ? 'refresh' : 'search'}}"></i></a>
                         </span>
-                        <input type="text" class="form-control" placeholder="Search mail" name="search">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
 
                     </div>
 
@@ -44,6 +45,7 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
+                            <th>No</th>
                             <th>Product</th>
                             <th>ID</th>
                             <th>Amount</th>
@@ -59,6 +61,7 @@
                     <tbody>
                         @forelse($barangs as $barang)
                                             <tr>
+                                                <td>{{ $loop->iteration }}</td>
                                                 <td>{{$barang->nama_barang}}</td>
                                                 <td>{{$barang->id}}</td>
                                                 <td>{{$barang->jumlah}}</td>
@@ -93,6 +96,7 @@
 
 
     <!-- card out -->
+    <h1 class="font-weight-light text-muted">Item Exited Storage</h1>
     <div class="card radius-10">
         <div class="card-header bg-transparent">
             <form method="GET" action="{{ route('supervisor.inventory.management') }}"
@@ -105,7 +109,7 @@
                                 style="color:inherit; {{request('search_out') ? '' : 'pointer-events:none;'}}"><i
                                     class="bx bx-{{(request('search_out') || request('search') || request('filter')) ? 'refresh' : 'search'}}"></i></a>
                         </span>
-                        <input type="text" class="form-control" placeholder="search mail" name="search_out">
+                        <input type="text" class="form-control" placeholder="search" name="search_out">
 
                     </div>
 
@@ -121,6 +125,7 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
+                            <th>No</th>
                             <th>Product</th>
                             <th>ID</th>
                             <th>Amount</th>
@@ -135,6 +140,7 @@
                     <tbody>
                         @forelse($barangsOut as $barang)
                             <tr>
+                                <td>{{ $loop->iteration }}</td>
                                 <td>{{$barang->nama_barang}}</td>
                                 <td>{{$barang->id}}</td>
                                 <td>{{$barang->jumlah}}</td>

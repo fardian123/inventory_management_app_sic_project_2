@@ -50,6 +50,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#contact">CONTACT</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#profil">CEK RESI</a>
+                        </li>
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ url(Auth::user()->role . '/dashboard') }}">DASHBOARD</a>
@@ -58,49 +61,129 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('login') }}">LOGIN</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{route('register')}}">REGISTER</a>
-                                </li>
-                            @endif
+                           
                         @endauth
 
                     </ul>
                 @endif
+
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="profil" class="hero container mt-4">
-        <div class="col-md-10 text-hero-div">
-            <p class="text-hero">
-                Kami berkomitmen untuk memberikan
-                <span style="color: #c9cc7e">
-                    Pelayanan <br class="hide" />
-                    Mudah, Cepat dan Terpercaya </span>untuk membantu <br class="hide" />
-                pelaku bisnis berkembang dan maju.
-            </p>
-        </div>
-
-        <div class="row">
-            <div class="col-md-5 d-flex justify-content-center py-3">
-                <img src="{{asset('welcome/heroImage.png')}}" alt="Hero Image" class="hero-img" />
+    <section id="profil" class="hero mt-4">
+        <div class="container">
+            <div class="col-md-10 text-hero-div">
+                <p class="text-hero">
+                    Kami berkomitmen untuk memberikan
+                    <span style="color: #c9cc7e">
+                        Pelayanan <br class="hide" />
+                        Mudah, Cepat dan Terpercaya </span>untuk membantu <br class="hide" />
+                    pelaku bisnis berkembang dan maju.
+                </p>
             </div>
-            <div class="col-md-7 d-flex justify-content-start py-3 text-lead-div ">
-                <div class="text-lead d-flex">
-                    <p>
-                        11 Express hadir pada tahun 2020 memberikan inovasi layanan pickup paket tanpa ketentuan untuk
-                        menjawab dan membantu menyelesaikan permasalahan pelaku bisnis. Di tahun 2024, 11 express
-                        konsisten untuk terus melakukan inovasi
-                        yang didukung oleh teknologi pengiriman terintegrasi untuk terus membantu pelaku bisnis agar
-                        mendapatkan pengalaman pengiriman yang mudah, cepat dan terpecaya.
-                    </p>
+
+
+
+
+            <div class="row">
+                <div class="col-md-5 d-flex justify-content-center py-3">
+                    <img src="{{asset('welcome/heroImage.png')}}" alt="Hero Image" class="hero-img" />
+                </div>
+                <div class="col-md-7 d-flex justify-content-start py-3 text-lead-div ">
+                    <div class="text-lead d-flex">
+                        <p>
+                            11 Express hadir pada tahun 2020 memberikan inovasi layanan pickup paket tanpa ketentuan
+                            untuk
+                            menjawab dan membantu menyelesaikan permasalahan pelaku bisnis. Di tahun 2024, 11 express
+                            konsisten untuk terus melakukan inovasi
+                            yang didukung oleh teknologi pengiriman terintegrasi untuk terus membantu pelaku bisnis agar
+                            mendapatkan pengalaman pengiriman yang mudah, cepat dan terpecaya.
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
+
     </section>
     <!-- End Hero Section -->
+
+
+    <section id="searchResi">
+        <div class="container">
+            <!-- Search Resi -->
+            <div class="col-md-12">
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <form action="{{route('cek.resi')}}" method="GET">
+                            <div class="input-group">
+                                <input type="text" name="resi" class="form-control" placeholder="Enter Resi Number"
+                                    value="{{ old('resi') }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                @if (session('message'))
+                    <div class="alert alert-{{ session('alert-type') }} text-danger">
+                        {{ session('message') }}
+                    </div>
+                @endif
+
+
+
+                @isset($resi)
+                    <div class="col-md-12 {{$resi ? "d-block" : "d-none"}}">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table align-middle">
+                                                <thead class="table-success">
+                                                    <tr>
+                                                        <th>Product</th>
+                                                        <th>ID</th>
+                                                        <th>Amount</th>
+                                                        <th>Masuk</th>
+                                                        <th>Keluar</th>
+                                                        <th>Pengirim</th>
+                                                        <th>Penerima</th>
+                                                        <th>Resi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>{{ $barang->nama_barang ?? ""}}</td>
+                                                        <td>{{ $barang->id ?? "" }}</td>
+                                                        <td>{{ $barang->jumlah ?? "" }}</td>
+                                                        <td>{{ $barang->tanggal_masuk ?? "" }}</td>
+                                                        <td>{{ $barang->tanggal_keluar ?? "" }}</td>
+                                                        <td>{{ $barang->pengirim ?? "" }}</td>
+                                                        <td>{{ $barang->penerima ?? "" }}</td>
+                                                        <td>{{ $resi->nomor_resi ?? "" }}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                @endisset
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- End Search Resi -->
+
 
     <!-- visimisi -->
     <section id="visimisi">
@@ -128,6 +211,8 @@
         </div>
     </section>
     <!-- END visimisi -->
+
+
 
     <!-- about us -->
     <section id="about" class="about-us-section py-5">
