@@ -11,7 +11,8 @@
                     <div class="d-flex align-items-center">
                         <div>
                             <p class="mb-0 text-secondary">Total Barang</p>
-                            <h4 class="my-1 text-info">{{$total_barang}}</h4>
+                            <h4 class="my-1 text-info">{{$total_barang ?? ""}}</h4>
+
                         </div>
                         <div class="widgets-icons-2 rounded-circle bg-gradient-blues text-white ms-auto"><i
                                 class='bx bxs-package'></i>

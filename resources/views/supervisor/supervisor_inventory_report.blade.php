@@ -48,7 +48,7 @@
                 <table class="table align-middle mb-0">
                     <thead class="table-light">
                         <tr>
-                        <th>No</th>
+                            <th>No</th>
                             <th>Product</th>
                             <th>ID</th>
                             <th>Amount</th>
@@ -124,9 +124,11 @@
                             </div>
                             <div class="col-md-6">
                                 <select type="text" class="form-control" id="tanggal_filter" placeholder="Nama Barang"
-                                    name="tanggal_filter" value="" >
-                                    <option value="tanggal_masuk">Tanggal Masuk</option>
-                                    <option value="tanggal_keluar" id="tanggal_keluar_opsi">Tanggal Keluar</option>
+                                    name="tanggal_filter" value="">
+                                    <option value="tanggal_masuk" id="tanggal_keluar_option_masuk">Tanggal Masuk
+                                    </option>
+                                    <option value="tanggal_keluar" id="tanggal_keluar_option_keluar">Tanggal Keluar
+                                    </option>
                                 </select>
                                 <span class="text-danger" id="tanggal_filter_error"></span>
                             </div>
@@ -139,8 +141,8 @@
 
                     <div class="col-md-6">
                         <label for="tanggal_awal" class="form-label">Tanggal Awal</label>
-                        <input type="date" class="form-control" id="tanggal_awal" placeholder="John Doe" name="tanggal_awal"
-                            value="">
+                        <input type="date" class="form-control" id="tanggal_awal" placeholder="John Doe"
+                            name="tanggal_awal" value="">
                         <span class="text-danger" id="tanggal_awal_error"></span>
                     </div>
                     <div class="col-md-6">
@@ -161,20 +163,24 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded',function(){
+    document.addEventListener('DOMContentLoaded', function () {
         const schedule_filter = document.getElementById('schedule_filter');
-        const tanggal_keluar_opsi =document.getElementById('tanggal_keluar_opsi');
-        function toggleDateInput(){
-            if(schedule_filter.value === "unscheduled"){
-                tanggal_keluar_opsi.disabled = true;
-            }
-            else{
-                tanggal_keluar_opsi.disabled = false;
+        const tanggal_keluar_option1_masuk = document.getElementById("tanggal_keluar_option_masuk");
+        const tanggal_keluar_option1_keluar = document.getElementById("tanggal_keluar_option_keluar");
+        const tanggal_keluar_filter = document.getElementById("tanggal_filter");
+        function toggleDateInput() {
+            if (schedule_filter.value === "unscheduled") {
+               
+                tanggal_keluar_option1_masuk.selected = true;
+                tanggal_keluar_option1_keluar.disabled = true;
+            } else {
+               
+                tanggal_keluar_option1_keluar.disabled = false;
             }
         }
 
         toggleDateInput();
-        schedule_filter.addEventListener('change',toggleDateInput)
+        schedule_filter.addEventListener('change', toggleDateInput)
 
     })
 </script>
