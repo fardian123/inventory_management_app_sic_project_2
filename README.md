@@ -52,7 +52,7 @@ This program was developed by team 11 as the second project for the Independent 
 - **MySQL**: Database management system.
 
 ## Contact
-For any inquiries, feel free to reach out at [your email].
+For any inquiries, feel free to reach out at fardianzahri24@gmail.com.
 
 
 
