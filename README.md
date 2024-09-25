@@ -23,7 +23,7 @@ This program was developed by team 11 as the second project for the Independent 
 
 1. Clone the repository:
     ```bash
-    git clone [repository-url]
+    git clone https://github.com/fardian123/inventory_management_app_sic_project_2
     ```
 2. Install dependencies:
     ```bash
